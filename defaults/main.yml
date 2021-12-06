@@ -1,0 +1,23 @@
+---
+duplicity_venv_path: ~root/venvs/duplicity
+duplicity_dpbx_app_key:
+duplicity_dpbx_access_token:
+duplicity_dpbx_app_secret:
+
+duplicity_targets: []
+
+# Example:
+#duplicity_targets:
+#  - directory: /home/user
+#    repository: dpbx:///user-repo # See Duplicity manual for more protocols.
+#    passhprase: passphrase
+#    exclude_patterns: [] # Optional. See Duplicity manual for the file selection details.
+#    full_if_older_than_days: # Optional. See Duplicity manual.
+#    remove_all_inc_of_but_n_full: # Optional. See Duplicity manual.
+#    remove_older_than: # Optional. See Duplicity manual.
+#    cron_month: # Optional.
+#    cron_weekday: # Optional.
+#    cron_day: # Optional.
+#    cron_hour: # Optional.
+#    cron_minute: # Optional.
+#    suppress_mail_on_success: no # Use chronic to suppress unwanted mail from cron. Default: yes.

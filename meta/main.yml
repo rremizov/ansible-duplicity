@@ -1,0 +1,17 @@
+galaxy_info:
+  role_name: duplicity
+  author: rremizov
+  description: Configure Duplicity backups.
+  license: MIT
+  min_ansible_version: 2.8
+
+  platforms:
+    - name: Debian
+      versions:
+        - 10
+
+  galaxy_tags:
+    - backup
+    - duplicity
+
+dependencies: []

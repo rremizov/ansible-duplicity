@@ -1,0 +1,38 @@
+#jinja2: lstrip_blocks: True
+#!/bin/bash
+
+set -e
+
+export DPBX_APP_KEY={{ duplicity_dpbx_app_key }}
+export DPBX_APP_SECRET={{ duplicity_dpbx_app_secret }}
+export DPBX_ACCESS_TOKEN={{ duplicity_dpbx_access_token }}
+export PASSPHRASE={{ item.passphrase }}
+
+set -x
+
+cd {{ duplicity_venv_path }}
+source ./bin/activate
+
+./bin/python ./bin/duplicity collection-status {{ item.repository }}
+
+./bin/python ./bin/duplicity \
+    --verbosity notice \
+    --exclude-other-filesystems \
+    {% if item.full_if_older_than_days is defined %}
+    --full-if-older-than {{ item.full_if_older_than_days }}D \
+    {% endif %}
+    {% for pattern in item.exclude_patterns|default([]) %}
+    --exclude '{{ pattern }}' \
+    {% endfor %}
+    {{ item.directory }} \
+    {{ item.repository }}
+
+{% if item.remove_older_than is defined %}
+./bin/python ./bin/duplicity remove-older-than {{ item.remove_older_than }} --force {{ item.repository }}
+{% endif %}
+
+{% if item.remove_all_inc_of_but_n_full is defined %}
+./bin/python ./bin/duplicity remove-all-inc-of-but-n-full {{ item.remove_all_inc_of_but_n_full }} --force {{ item.repository }}
+{% endif %}
+
+./bin/python ./bin/duplicity cleanup --force {{ item.repository }}
