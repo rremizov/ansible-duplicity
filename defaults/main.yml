@@ -7,7 +7,7 @@ duplicity_dpbx_app_secret:
 duplicity_targets: []
 
 # Example:
-#duplicity_targets:
+# duplicity_targets:
 #  - directory: /home/user
 #    repository: dpbx:///user-repo # See Duplicity manual for more protocols.
 #    passhprase: passphrase
