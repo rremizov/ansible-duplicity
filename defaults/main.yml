@@ -5,7 +5,6 @@ duplicity_dpbx_access_token:
 duplicity_dpbx_app_secret:
 
 duplicity_targets: []
-
 # Example:
 # duplicity_targets:
 #  - directory: /home/user
@@ -21,3 +20,4 @@ duplicity_targets: []
 #    cron_hour: # Optional.
 #    cron_minute: # Optional.
 #    suppress_mail_on_success: no # Use chronic to suppress unwanted mail from cron. Default: yes.
+#    state: present # Or 'absent'.
